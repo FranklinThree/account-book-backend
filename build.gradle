@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.github.franklinthree'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/junit/junit
+    testImplementation 'junit:junit:4.13.2'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
+
+
+//    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+//    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
+}
+
+
