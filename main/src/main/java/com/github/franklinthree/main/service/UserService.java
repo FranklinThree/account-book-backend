@@ -6,12 +6,12 @@ public interface UserService {
 
 
     /**
-     * 注册用户
+     * 保存用户
      *
      * @param user 用户
      * @return int 影响数量
      */
-    int registerUser(User user);
+    int saveUser(User user);
 
     /**
      * 根据id删除用户

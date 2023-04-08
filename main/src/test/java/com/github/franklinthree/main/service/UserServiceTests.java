@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 
 /**
  * 用户服务测试
@@ -22,13 +23,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class UserServiceTests {
     @Autowired
     private UserService userService;
-    private User user = new User(null, "FranklinThree123456", "FranklinThree", "three", "222@qq.com", "15922222222", "123");
+    private User user = new User("FranklinThree123456", "FranklinThree", "three", "222@qq.com", "15922222222", "123");
 
 
     @Test
     @Order(1)
     public void testRegisterUser(){
-        System.out.println("注册用户：" + userService.registerUser(user));
+        System.out.println("注册用户：" + userService.saveUser(user));
         System.out.println("用户信息：" + user);
     }
 

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
     @Override
-    public int registerUser(User user) {
+    public int saveUser(User user) {
         return userMapper.insert(user);
     }
 

@@ -20,6 +20,7 @@ public interface UserMapper {
      * @param user 用户
      * @return int 影响数量
      */
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     @Insert("insert into t_user(uid, realName, nickName, email, phone, password) values(#{uid}, #{realName}, #{nickName}, #{email}, #{phone}, #{password})")
     int insert(User user);
 
