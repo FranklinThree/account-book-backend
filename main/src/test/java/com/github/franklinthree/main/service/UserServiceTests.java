@@ -3,6 +3,7 @@ package com.github.franklinthree.main.service;
 import com.github.franklinthree.main.pojo.User;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 
 @SpringBootTest()
+@TestMethodOrder(org.junit.jupiter.api.MethodOrderer.OrderAnnotation.class)
 public class UserServiceTests {
     @Autowired
     private UserService userService;
@@ -26,7 +28,6 @@ public class UserServiceTests {
     @Test
     @Order(1)
     public void testRegisterUser(){
-
         System.out.println("注册用户：" + userService.registerUser(user));
         System.out.println("用户信息：" + user);
     }
@@ -34,13 +35,15 @@ public class UserServiceTests {
     @Test
     @Order(10)
     public void testRemoveUser(){
+        user = userService.getUserByUid(user.getUid());
         System.out.println("删除用户：" + userService.removeUserById(user.getId()));
-        System.out.println("被删除的用户信息：" + userService.getUserByUid(user.getUid()));
+        System.out.println("被删除的用户信息：" + user);
     }
 
     @Test
     @Order(8)
     public void testUpdateUser(){
+        user = userService.getUserByUid(user.getUid());
         user.setPassword("123456");
         System.out.println("更新用户：" + userService.updateUser(user));;
         System.out.println("更新后的用户信息：" + userService.getUserByUid(user.getUid()));

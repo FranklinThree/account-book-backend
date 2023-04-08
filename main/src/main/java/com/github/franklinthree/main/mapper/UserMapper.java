@@ -20,7 +20,7 @@ public interface UserMapper {
      * @param user 用户
      * @return int 影响数量
      */
-    @Insert("insert into t_user(uid, real_name, nick_name, email, phone, password) values(#{uid}, #{realName}, #{nickName}, #{email}, #{phone}, #{password})")
+    @Insert("insert into t_user(uid, realName, nickName, email, phone, password) values(#{uid}, #{realName}, #{nickName}, #{email}, #{phone}, #{password})")
     int insert(User user);
 
     /**
@@ -38,7 +38,7 @@ public interface UserMapper {
      * @param user 用户
      * @return int 影响数量
      */
-    @Update("update t_user set real_name = #{realName}, nick_name = #{nickName}, email = #{email}, phone = #{phone}, password = #{password} where id = #{id}")
+    @Update("update t_user set realName = #{realName}, nickName = #{nickName}, email = #{email}, phone = #{phone}, password = #{password} where id = #{id}")
     int update(User user);
 
     /**
