@@ -1,4 +1,4 @@
-package com.github.franklinthree.main.pojo;
+package com.github.franklinthree.main.model;
 
 /**
  * 用户

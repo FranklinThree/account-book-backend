@@ -1,10 +1,19 @@
 package com.github.franklinthree.main.mapper;
 
-import com.github.franklinthree.main.pojo.Picture;
+import com.github.franklinthree.main.model.Picture;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+/**
+ * 图像映射器
+ *
+ * @author FranklinThree
+ * @date 2023/04/09
+ * @className PictureMapper
+ * @see
+ * @since 1.0.0
+ */
 @Mapper
 public interface PictureMapper {
     /**
@@ -13,7 +22,7 @@ public interface PictureMapper {
      * @param picture 图片
      * @return int 影响数量
      */
-    @Insert("insert into t_pic(name, data, groupId, createTime, type) values(#{name}, #{data}, #{groupId}, #{createTime}, #{type})")
+    @Insert("insert into t_picture(name, data, groupId, createTime, type) values(#{name}, #{data}, #{groupId}, #{createTime}, #{type})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(Picture picture);
 
@@ -23,7 +32,7 @@ public interface PictureMapper {
      * @param id id
      * @return int 影响数量
      */
-    @Delete("delete from t_pic where id = #{id}")
+    @Delete("delete from t_picture where id = #{id}")
     int deleteById(Long id);
 
     /**
@@ -32,7 +41,7 @@ public interface PictureMapper {
      * @param name 名字
      * @return int 影响数量
      */
-    @Delete("delete from t_pic where name = #{name}")
+    @Delete("delete from t_picture where name = #{name}")
     int deleteByName(String name);
 
     /**
@@ -41,7 +50,7 @@ public interface PictureMapper {
      * @param groupId 组id
      * @return int 影响数量
      */
-    @Delete("delete from t_pic where groupId = #{groupId}")
+    @Delete("delete from t_picture where groupId = #{groupId}")
     int deleteByGroupId(Long groupId);
 
 //    /**
@@ -50,7 +59,7 @@ public interface PictureMapper {
 //     * @param picture 图片
 //     * @return int 影响数量
 //     */
-//    @Update("update t_pic set name = #{name}, data = #{data}, groupId = #{groupId}, createTime = #{createTime}, type = #{type} where id = #{id}")
+//    @Update("update t_picture set name = #{name}, data = #{data}, groupId = #{groupId}, createTime = #{createTime}, type = #{type} where id = #{id}")
 //    @SuppressWarnings("notSupported")
 //    int update(Picture picture);
 
@@ -60,7 +69,7 @@ public interface PictureMapper {
      * @param id id
      * @return {@link Picture } 图片
      */
-    @Select("select * from t_pic where id = #{id}")
+    @Select("select * from t_picture where id = #{id}")
     Picture selectById(Long id);
 
     /**
@@ -69,7 +78,7 @@ public interface PictureMapper {
      * @param name 名字
      * @return {@link Picture } 图片
      */
-    @Select("select * from t_pic where name = #{name}")
+    @Select("select * from t_picture where name = #{name}")
     Picture selectByName(String name);
 
     /**
@@ -78,7 +87,7 @@ public interface PictureMapper {
      * @param groupId 组id
      * @return {@link List }<{@link Picture }> 图片列表
      */
-    @Select("select * from t_pic where groupId = #{groupId}")
+    @Select("select * from t_picture where groupId = #{groupId}")
     List<Picture> selectByGroupId(Long groupId);
 
 

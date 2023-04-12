@@ -1,11 +1,6 @@
-package com.github.franklinthree.main.pojo;
+package com.github.franklinthree.main.model;
 
-import com.github.franklinthree.main.util.SimpleDateFormatImpl;
-import org.springframework.lang.NonNull;
-
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 /**
  * 图片
@@ -29,8 +24,8 @@ public class Picture {
     public Picture() {
     }
 
-    public Picture(Long id, String name, Byte[] data, Long groupId, Long createTime, PictureType type) {
-        this.id = id;
+    public Picture(String name, Byte[] data, Long groupId, Long createTime, PictureType type) {
+        this.id = null;
         this.name = name;
         this.data = data;
         this.groupId = groupId;

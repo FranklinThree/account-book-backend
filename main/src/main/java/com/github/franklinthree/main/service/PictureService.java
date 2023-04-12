@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.pojo.Picture;
+import com.github.franklinthree.main.model.Picture;
 
 import java.util.List;
 
@@ -70,7 +70,7 @@ public interface PictureService {
      * @param groupId 组id
      * @return {@link List }<{@link Picture }>
      */
-    List<Picture> getPictureByGroupId(Long groupId);
+    List<Picture> getPicturesByGroupId(Long groupId);
 
 
 

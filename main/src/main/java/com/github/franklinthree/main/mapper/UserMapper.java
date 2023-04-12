@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.mapper;
 
-import com.github.franklinthree.main.pojo.User;
+import com.github.franklinthree.main.model.User;
 import org.apache.ibatis.annotations.*;
 
 /**

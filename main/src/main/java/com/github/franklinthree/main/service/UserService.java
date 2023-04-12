@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.pojo.User;
+import com.github.franklinthree.main.model.User;
 
 public interface UserService {
 
@@ -27,7 +27,7 @@ public interface UserService {
      * @param user 用户
      * @return int 影响数量
      */
-    int updateUser(User user);
+    int modifyUser(User user);
 
 
     /**

@@ -1,7 +1,7 @@
 package com.github.franklinthree.main.service.impl;
 
 import com.github.franklinthree.main.mapper.PictureMapper;
-import com.github.franklinthree.main.pojo.Picture;
+import com.github.franklinthree.main.model.Picture;
 import com.github.franklinthree.main.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import java.util.List;
 public class PictureServiceImpl implements PictureService {
     @Autowired
     private PictureMapper pictureMapper;
+
 
     public int savePicture(Picture picture) {
         return pictureMapper.insert(picture);
@@ -43,7 +44,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public List<Picture> getPictureByGroupId(Long groupId) {
+    public List<Picture> getPicturesByGroupId(Long groupId) {
         return pictureMapper.selectByGroupId(groupId);
     }
 

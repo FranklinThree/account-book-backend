@@ -1,5 +1,6 @@
 package com.github.franklinthree.main.config;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -24,6 +25,11 @@ public class RedisConfigTests {
     @Autowired
     private RedisTemplate<String, Serializable> redisCacheTemplate;
 
+    @BeforeEach
+    void setUp() {
+        System.out.println("RedisConfigTests-----------------------------------------------");
+    }
+
     /**
      * 存值
      */
@@ -33,14 +39,17 @@ public class RedisConfigTests {
         redisCacheTemplate.opsForValue().set("name", "FranklinThree");
     }
 
-
     /**
      * 取值
      */
     @Test
     @Order(2)
     public void testGetValue(){
-        System.out.println(redisCacheTemplate.opsForValue().get("name"));
+        Serializable name = redisCacheTemplate.opsForValue().get("name");
+        System.out.println(name);
+        String name2 = name instanceof String ? ((String) name) : null;
+        assert name2 != null;
+        assert name2.equals("FranklinThree");
     }
 
     /**
@@ -49,6 +58,10 @@ public class RedisConfigTests {
     @Test
     @Order(3)
     public void testDeleteValue(){
-        System.out.println(redisCacheTemplate.delete("name"));
+        Boolean deleted = redisCacheTemplate.delete("name");
+        System.out.println(deleted);
+        assert Boolean.TRUE.equals(deleted);
+//        Serializable name = redisCacheTemplate.opsForValue().get("name");
+//        assert name == null;
     }
 }

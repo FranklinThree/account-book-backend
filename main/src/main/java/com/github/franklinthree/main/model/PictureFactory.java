@@ -1,16 +1,9 @@
-package com.github.franklinthree.main.pojo;
+package com.github.franklinthree.main.model;
 
-import com.github.franklinthree.main.pojo.Picture;
-import com.github.franklinthree.main.pojo.PictureType;
 import com.github.franklinthree.main.util.Base62Encoder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
 
 public class PictureFactory {
     private int index = 0;
@@ -54,7 +47,7 @@ public class PictureFactory {
         long time = date.getTime();
         String encode = Base62Encoder.encode(time / (long) (Math.random() * 9 + 2)) + groupId * 13 + index;
         String saveName = encode +'-'+ sdf.format(date) + "." + type.toString();
-        return new Picture(null, saveName, data, groupId, System.currentTimeMillis(), type);
+        return new Picture(saveName, data, groupId, System.currentTimeMillis(), type);
     }
     /**
      * 生成图片格式

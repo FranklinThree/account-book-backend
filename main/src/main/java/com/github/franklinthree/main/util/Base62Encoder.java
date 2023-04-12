@@ -1,5 +1,6 @@
 package com.github.franklinthree.main.util;
 
+
 public class Base62Encoder {
     private static final String BASE62_CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final int BASE62 = 62;
