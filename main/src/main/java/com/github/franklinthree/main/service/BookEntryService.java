@@ -1,6 +1,7 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.BookEntry;
+import com.github.franklinthree.main.model.server.BookEntry;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,10 +25,15 @@ public interface BookEntryService {
      */
     int saveBookEntry(BookEntry bookEntry);
 
+    int saveNewBookEntryList(List<BookEntry> bookEntryList);
+
+    @Transactional
+    int saveNewBookEntryList(List<BookEntry> bookEntryList, Long groupId);
+
     /**
-     * 按id删除账本条目
+     * 按id获取账本条目
      *
-     * @param id 账本条目id
+     * @param id id
      * @return int 影响数量
      */
     int removeBookEntryById(Long id);
@@ -40,29 +46,47 @@ public interface BookEntryService {
      */
     int removeBookEntryByGroupId(Long groupId);
 
-    /**
-     * 按pictureId删除账本条目
-     *
-     * @param pictureId 账本条目pictureId
-     * @return int 影响数量
-     */
-    int removeBookEntryByPictureId(Long pictureId);
+//    /**
+//     * 按pictureId删除账本条目
+//     *
+//     * @param pictureId 账本条目pictureId
+//     * @return int 影响数量
+//     */
+//    int removeBookEntryByPictureId(Long pictureId);
+
+//    /**
+//     * 按channelId删除账本条目
+//     *
+//     * @param channelId 账本条目channelId
+//     * @return int 影响数量
+//     */
+//    int removeBookEntryByChannelId(Long channelId);
 
     /**
-     * 按channelId删除账本条目
-     *
-     * @param channelId 账本条目channelId
-     * @return int 影响数量
-     */
-    int removeBookEntryByChannelId(Long channelId);
-
-    /**
-     * 更新账本条目
+     * 更新账本条目忽略条目标记
+     * 注意，更新EntryTags时不应使用此方法
      *
      * @param bookEntry 账本条目
      * @return int 影响数量
      */
-    int updateBookEntry(BookEntry bookEntry);
+    int updateBookEntryInfo(BookEntry bookEntry);
+
+//    /**
+//     * 更新账本条目
+//     * 注意，此操作将更新EntryTags属性，可能导致性能问题
+//     *
+//     * @param bookEntry 账本条目
+//     * @return int 影响数量
+//     */
+//    int updateBookEntry(BookEntry bookEntry);
+
+//    /**
+//     * 更新账本条目中的条目标记
+//     *
+//     * @param bookEntry 账本条目
+//     * @return int 影响数量
+//     */
+//    int updateEntryTags(BookEntry bookEntry);
 
     /**
      * 按id查询账本条目
@@ -72,13 +96,13 @@ public interface BookEntryService {
      */
     BookEntry getBookEntryById(Long id);
 
-    /**
-     * 按pictureId查询账本条目
-     *
-     * @param pictureId 账本条目pictureId
-     * @return BookEntry 账本条目
-     */
-    BookEntry getBookEntryByPictureId(Long pictureId);
+//    /**
+//     * 按pictureId查询账本条目
+//     *
+//     * @param pictureId 账本条目pictureId
+//     * @return BookEntry 账本条目
+//     */
+//    BookEntry getBookEntryByPictureId(Long pictureId);
 
     /**
      * 按groupId查询账本条目

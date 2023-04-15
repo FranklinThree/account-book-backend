@@ -1,4 +1,4 @@
-package com.github.franklinthree.main.model;
+package com.github.franklinthree.main.model.server;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @see
  * @since 1.0.0
  */
-public class Picture {
+public class Picture implements Cloneable{
     private Long id;
     private String name;
     private Byte[] data;
@@ -20,6 +20,19 @@ public class Picture {
 
     private PictureType type;
 
+
+    @Override
+    public Picture clone() throws CloneNotSupportedException {
+
+        Picture picture = (Picture) super.clone();
+        picture.id = this.id;
+        picture.data = picture.getData().clone();
+        picture.groupId = this.groupId;
+        picture.createTime = this.createTime;
+        picture.type = this.type;
+
+        return picture;
+    }
 
     public Picture() {
     }
@@ -31,6 +44,16 @@ public class Picture {
         this.groupId = groupId;
         this.createTime = createTime;
         this.type = type;
+    }
+
+
+    public Picture(String name, Byte[] data, Long groupId) {
+        this.id = null;
+        this.name = name;
+        this.data = data;
+        this.groupId = groupId;
+        this.createTime = null;
+        this.type = null;
     }
 
 

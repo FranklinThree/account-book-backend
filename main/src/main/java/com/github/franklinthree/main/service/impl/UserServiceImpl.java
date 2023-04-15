@@ -1,7 +1,7 @@
 package com.github.franklinthree.main.service.impl;
 
 import com.github.franklinthree.main.mapper.UserMapper;
-import com.github.franklinthree.main.model.User;
+import com.github.franklinthree.main.model.server.User;
 import com.github.franklinthree.main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public int removeUserById(Long id) {
         return userMapper.deleteById(id);
+    }
+
+    @Override
+    public int removeUserByUid(String uid) {
+        return userMapper.deleteByUid(uid);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.mapper;
 
-import com.github.franklinthree.main.model.EntryTagEnum;
+import com.github.franklinthree.main.model.server.EntryTagEnum;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

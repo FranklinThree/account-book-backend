@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service.impl;
 
-import com.github.franklinthree.main.model.Channel;
+import com.github.franklinthree.main.model.server.Channel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -90,8 +90,6 @@ class ChannelServiceImplTest {
         int count = channelService.modifyChannel(channel);
         System.out.println("更新渠道：" + count);
         assert count == 1;
-
-
     }
 
     @Test

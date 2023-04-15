@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service.impl;
 
-import com.github.franklinthree.main.model.User;
+import com.github.franklinthree.main.model.server.User;
 import com.github.franklinthree.main.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;

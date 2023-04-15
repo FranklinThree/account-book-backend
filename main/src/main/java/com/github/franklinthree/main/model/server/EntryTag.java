@@ -1,6 +1,4 @@
-package com.github.franklinthree.main.model;
-
-import org.springframework.lang.NonNull;
+package com.github.franklinthree.main.model.server;
 
 /**
  * 条目标记

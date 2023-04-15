@@ -1,6 +1,5 @@
-package com.github.franklinthree.main.model;
+package com.github.franklinthree.main.model.server;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,6 +27,40 @@ public class BookEntry {
     private Long createTime;
 
     private Long updateTime;
+
+    private Long previousId;
+
+    private Long nextId;
+
+    public BookEntry(Picture picture, Channel channel, double money, String description, Set<EntryTag> entryTags, Long groupId, Long createTime, Long updateTime, Long previousId, Long nextId) {
+        this.id = null;
+        this.picture = picture;
+        this.channel = channel;
+        this.money = money;
+        this.description = description;
+        this.entryTags = entryTags;
+        this.groupId = groupId;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.previousId = previousId;
+        this.nextId = nextId;
+    }
+
+    public Long getPreviousId() {
+        return previousId;
+    }
+
+    public void setPreviousId(Long previousId) {
+        this.previousId = previousId;
+    }
+
+    public Long getNextId() {
+        return nextId;
+    }
+
+    public void setNextId(Long nextId) {
+        this.nextId = nextId;
+    }
 
     public Long getId() {
         return id;
@@ -129,7 +162,48 @@ public class BookEntry {
         this.description = description;
         this.entryTags = entryTags;
         this.groupId = groupId;
-        this.createTime = System.currentTimeMillis();
-        this.updateTime = System.currentTimeMillis();
+        this.createTime = null;
+        this.updateTime = null;
+        this.previousId = null;
+        this.nextId = null;
+    }
+    public BookEntry(Picture picture, Channel channel, double money, String description, Set<EntryTag> entryTags) {
+        this.id = null;
+        this.picture = picture;
+        this.channel = channel;
+        this.money = money;
+        this.description = description;
+        this.entryTags = entryTags;
+        this.groupId = null;
+        this.createTime = null;
+        this.updateTime = null;
+        this.previousId = null;
+        this.nextId = null;
+    }
+
+
+    public void addEntryTagEnum(EntryTagEnum entryTagEnum) {
+        this.entryTags.add(new EntryTag(entryTagEnum, this.id));
+    }
+
+    public void removeEntryTagEnum(EntryTagEnum entryTagEnum) {
+        this.entryTags.remove(new EntryTag(entryTagEnum, this.id));
+    }
+
+    public boolean hasEntryTagEnum(EntryTagEnum entryTagEnum) {
+        boolean contains = this.entryTags.contains(new EntryTag(entryTagEnum, this.id));
+        if (!contains){
+            for (EntryTag entryTag : this.entryTags) {
+                if (entryTag.getEntryTagEnum().getName().equals(entryTagEnum.getName())) {
+                    contains = true;
+                    break;
+                }
+            }
+        }
+        return contains;
+    }
+
+    public boolean hasAnyEntryTagEnum(){
+        return this.entryTags != null && !this.entryTags.isEmpty();
     }
 }

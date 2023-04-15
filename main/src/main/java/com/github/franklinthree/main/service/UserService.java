@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.User;
+import com.github.franklinthree.main.model.server.User;
 
 public interface UserService {
 
@@ -20,6 +20,14 @@ public interface UserService {
      * @return int 影响数量
      */
     int removeUserById(Long id);
+
+    /**
+     * 根据uid删除用户
+     *
+     * @param uid uid 用户的uid
+     * @return int 影响数量
+     */
+    int removeUserByUid(String uid);
 
     /**
      * 更新用户

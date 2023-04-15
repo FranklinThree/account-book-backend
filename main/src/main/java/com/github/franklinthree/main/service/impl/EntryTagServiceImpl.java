@@ -1,9 +1,8 @@
 package com.github.franklinthree.main.service.impl;
 
-import com.github.franklinthree.main.mapper.EntryTagEnumMapper;
 import com.github.franklinthree.main.mapper.EntryTagMapper;
-import com.github.franklinthree.main.model.EntryTag;
-import com.github.franklinthree.main.model.EntryTagEnum;
+import com.github.franklinthree.main.model.server.EntryTag;
+import com.github.franklinthree.main.model.server.EntryTagEnum;
 import com.github.franklinthree.main.service.EntryTagEnumService;
 import com.github.franklinthree.main.service.EntryTagService;
 import org.springframework.beans.factory.annotation.Autowired;

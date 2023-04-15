@@ -1,7 +1,7 @@
 package com.github.franklinthree.main.mapper;
 
 
-import com.github.franklinthree.main.model.Channel;
+import com.github.franklinthree.main.model.server.Channel;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

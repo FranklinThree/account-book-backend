@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.EntryTagEnum;
+import com.github.franklinthree.main.model.server.EntryTagEnum;
 
 import java.util.List;
 

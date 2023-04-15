@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.mapper;
 
-import com.github.franklinthree.main.model.User;
+import com.github.franklinthree.main.model.server.User;
 import org.apache.ibatis.annotations.*;
 
 /**
@@ -33,6 +33,14 @@ public interface UserMapper {
     @Delete("delete from t_user where id = #{id}")
     int deleteById(Long id);
 
+    /**
+     * 按uid删除用户
+     *
+     * @param uid uid
+     * @return int 影响数量
+     */
+    @Delete("delete from t_user where uid = #{uid}")
+    int deleteByUid(String uid);
     /**
      * 更新用户
      *

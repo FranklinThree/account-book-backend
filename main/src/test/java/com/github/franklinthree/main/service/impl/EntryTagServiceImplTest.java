@@ -1,7 +1,7 @@
 package com.github.franklinthree.main.service.impl;
 
-import com.github.franklinthree.main.model.EntryTag;
-import com.github.franklinthree.main.model.EntryTagEnum;
+import com.github.franklinthree.main.model.server.EntryTag;
+import com.github.franklinthree.main.model.server.EntryTagEnum;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

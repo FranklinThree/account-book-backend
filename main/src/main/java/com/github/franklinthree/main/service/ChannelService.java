@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.Channel;
+import com.github.franklinthree.main.model.server.Channel;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.mapper;
 
-import com.github.franklinthree.main.model.Picture;
+import com.github.franklinthree.main.model.server.Picture;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -22,9 +22,9 @@ public interface PictureMapper {
      * @param picture 图片
      * @return int 影响数量
      */
-    @Insert("insert into t_picture(name, data, groupId, createTime, type) values(#{name}, #{data}, #{groupId}, #{createTime}, #{type})")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    int insert(Picture picture);
+    @Insert("insert into t_picture(name, data, groupId, createTime, type) values(#{name}, #{picture.data}, #{picture.groupId}, #{createTime}, #{picture.type})")
+    @Options(useGeneratedKeys = true, keyProperty = "picture.id", keyColumn = "id")
+    int insert(@Param("picture") Picture picture, @Param("createTime") Long createTime, @Param("name") String name);
 
     /**
      * 按id删除图片

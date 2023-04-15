@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.EntryTag;
+import com.github.franklinthree.main.model.server.EntryTag;
 
 import java.util.List;
 

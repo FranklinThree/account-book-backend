@@ -1,13 +1,15 @@
 package com.github.franklinthree.main.service.impl;
 
-import com.github.franklinthree.main.model.Picture;
-import com.github.franklinthree.main.model.PictureFactory;
+import com.github.franklinthree.main.model.server.Picture;
+import com.github.franklinthree.main.model.server.PictureFactory;
 import com.github.franklinthree.main.service.PictureService;
+import org.slf4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -26,7 +28,10 @@ import java.util.List;
 public class PictureServiceTest {
     @Autowired
     private PictureService pictureService;
-    
+
+    @Autowired
+    @Qualifier("serviceLogger")
+    private Logger serviceLogger;
     @Autowired
     private PictureFactory pictureFactory;
 
@@ -39,12 +44,13 @@ public class PictureServiceTest {
     @Test
     @Order(1)
     public void savePicture(){
-        Picture picture = pictureFactory.createPicture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
-        Picture picture1 = pictureFactory.createPicture("1.bmp", new Byte[]{0,1,2,3,3,3,33},0L);
-        Picture picture2 = pictureFactory.createPicture("2.png", new Byte[]{0,1,2,3,3,3,31},0L);
-        Picture picture3 = pictureFactory.createPicture("3.jpeg", new Byte[]{0,1,2,3,3,3,30},0L);
-        Picture picture4 = pictureFactory.createPicture("4.webp", new Byte[]{0,1,2,3,3,3,38},0L);
-        Picture picture10 = pictureFactory.createPicture("5.jpg", new Byte[]{0,1,2,31,32,33,3},1L);
+        serviceLogger.info("savePicture");
+        Picture picture = new Picture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
+        Picture picture1 = new Picture("1.bmp", new Byte[]{0,1,2,3,3,3,33},0L);
+        Picture picture2 = new Picture("2.png", new Byte[]{0,1,2,3,3,3,31},0L);
+        Picture picture3 = new Picture("3.jpeg", new Byte[]{0,1,2,3,3,3,30},0L);
+        Picture picture4 = new Picture("4.webp", new Byte[]{0,1,2,3,3,3,38},0L);
+        Picture picture10 = new Picture("5.jpg", new Byte[]{0,1,2,31,32,33,3},1L);
         System.out.println("插入图片：");
 
         int count = pictureService.savePicture(picture);
@@ -76,7 +82,7 @@ public class PictureServiceTest {
     @Order(4)
     public void removePictureById(){
         System.out.println("删除图片：");
-        Picture picture11 = pictureFactory.createPicture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
+        Picture picture11 = new Picture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
         pictureService.savePicture(picture11);
         int count = pictureService.removePictureById(picture11.getId());
         System.out.println(count);
@@ -87,8 +93,8 @@ public class PictureServiceTest {
     @Order(5)
     public void removePictureByGroupId(){
         System.out.println("批量删除图片：");
-        Picture picture = pictureFactory.createPicture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
-        Picture picture10 = pictureFactory.createPicture("5.jpg", new Byte[]{0,1,2,31,32,33,3},1L);
+        Picture picture = new Picture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
+        Picture picture10 = new Picture("5.jpg", new Byte[]{0,1,2,31,32,33,3},1L);
 
         int count = pictureService.removePictureByGroupId(picture.getGroupId());
         System.out.println(count);
@@ -103,7 +109,7 @@ public class PictureServiceTest {
     @Order(2)
     public void getPictureById(){
         System.out.println("根据id获取图片：");
-        Picture picture21 = pictureFactory.createPicture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
+        Picture picture21 = new Picture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
         pictureService.savePicture(picture21);
         Picture pictureById = pictureService.getPictureById(picture21.getId());
         System.out.println(pictureById);
@@ -115,7 +121,7 @@ public class PictureServiceTest {
     public void getPictureByName(){
         System.out.println("根据name获取图片：");
 
-        Picture picture21 = pictureFactory.createPicture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
+        Picture picture21 = new Picture("6.jpg", new Byte[]{0,1,62,31,32,33,3},1L);
         pictureService.savePicture(picture21);
         Picture pictureByName = pictureService.getPictureByName(picture21.getName());
         System.out.println(pictureByName);
@@ -126,7 +132,7 @@ public class PictureServiceTest {
     @Order(3)
     public void getPicturesByGroupId(){
         System.out.println("根据groupId获取图片：");
-        Picture picture = pictureFactory.createPicture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
+        Picture picture = new Picture("0.jpg", new Byte[]{0,1,2,3,3,3,3},0L);
         List<Picture> pictureByGroupId = pictureService.getPicturesByGroupId(picture.getGroupId());
         for (Picture aPicture : pictureByGroupId) {
             assert aPicture.getName() != null;

@@ -1,6 +1,6 @@
 package com.github.franklinthree.main.service;
 
-import com.github.franklinthree.main.model.Picture;
+import com.github.franklinthree.main.model.server.Picture;
 
 import java.util.List;
 

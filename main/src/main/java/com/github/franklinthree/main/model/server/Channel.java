@@ -1,4 +1,4 @@
-package com.github.franklinthree.main.model;
+package com.github.franklinthree.main.model.server;
 
 /**
  * 条目获取渠道

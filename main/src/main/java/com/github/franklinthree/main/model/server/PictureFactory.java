@@ -1,4 +1,4 @@
-package com.github.franklinthree.main.model;
+package com.github.franklinthree.main.model.server;
 
 import com.github.franklinthree.main.util.Base62Encoder;
 
@@ -33,22 +33,40 @@ public class PictureFactory {
     }
 
     /**
-     * 创建图片
+     * 以离散数据方式创建图片
      *
      * @param name    名字
      * @param data    数据
      * @param groupId 组id
      * @return {@link Picture } 图片
      */
-    public Picture createPicture(String name, Byte[] data, Long groupId) {
-        indexRoll();
+    public Picture createPicture(String name, Byte[] data, Long groupId) throws RuntimeException{
+        String saveName = generateName(name, groupId);
         PictureType type = generateType(name);
-        Date date = new Date();
-        long time = date.getTime();
-        String encode = Base62Encoder.encode(time / (long) (Math.random() * 9 + 2)) + groupId * 13 + index;
-        String saveName = encode +'-'+ sdf.format(date) + "." + type.toString();
         return new Picture(saveName, data, groupId, System.currentTimeMillis(), type);
     }
+
+
+    /**
+     * 以图片数据方式处理图片对象
+     *
+     * @param picture 图片数据
+     * @return {@link Picture } 图片
+     */
+    public Picture fixPicture(Picture picture) throws RuntimeException{
+
+        if (picture.getType() == null){
+            picture.setType(generateType(picture.getName()));
+        }
+        picture.setName(generateName(picture.getName(), picture.getGroupId()));
+//        picture.getCreateTime();
+//        if (picture.getCreateTime() == null) {
+//            picture.setCreateTime(System.currentTimeMillis());
+//        }
+        return picture;
+    }
+
+
     /**
      * 生成图片格式
      *
@@ -86,6 +104,25 @@ public class PictureFactory {
         }else if (this.index <= 0){
             this.index = 1;
         }
+    }
+
+    /**
+     * 生成图片名
+     *
+     * @param originalName 原始图片名
+     * @param groupId      组id
+     * @return {@link String } 图片名
+     */
+    public String generateName(String originalName, Long groupId){
+        indexRoll();
+        PictureType type = generateType(originalName);
+        Date date = new Date();
+        long time = date.getTime();
+        if (groupId == null){
+            groupId = 1L;
+        }
+        String encode = Base62Encoder.encode(time / (long) (Math.random() * 9 + 2)) + groupId * 13 + index;
+        return encode +'-'+ sdf.format(date) + "." + type.toString();
     }
 }
 
